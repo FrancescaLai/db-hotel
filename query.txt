@@ -1,48 +1,55 @@
 1) Seleziona tutti gli ospiti che sono stati identificati con la carta di identità
 
-SELECT *  
-FROM 	`ospiti` 
-WHERE `document_type` = 'CI'
+  SELECT *  
+  FROM 	`ospiti` 
+  WHERE `document_type` = 'CI';
 
 2) Seleziona tutti gli ospiti che sono nati dopo il 1988
 
-SELECT * 
-FROM 	`ospiti` 
-WHERE `date_of_birth` >= '1989-01-01'
+A- SELECT * 
+   FROM  `ospiti` 
+   WHERE `date_of_birth` >= '1989-01-01';
+
+B) SELECT * 
+   FROM  `ospiti` 
+   WHERE YEAR(`date_of_birth`) > '1988';
 
 
 3) Seleziona tutti gli ospiti che hanno più di 20 anni (al momento dell’esecuzione della query)
 
-SELECT * 
-FROM 	`ospiti` 
-WHERE `date_of_birth` < DATE_SUB(CURRENT_DATE, INTERVAL 20 YEAR)
+A) SELECT * 
+   FROM  `ospiti` 
+   WHERE `date_of_birth` < DATE_SUB(CURRENT_DATE, INTERVAL 20 YEAR);
 
+B) SELECT * 
+   FROM  `ospiti` 
+   WHERE `date_of_birth` < NOW() - INTERVAL 20 YEAR;
 
 4) Seleziona tutti gli ospiti il cui nome inizia con la D
 
-SELECT * 
-FROM 	`ospiti` 
-WHERE `name` LIKE 'd%'
+  SELECT * 
+  FROM 	`ospiti` 
+  WHERE `name` LIKE 'd%';
 
 5) Calcola il totale degli ordini accepted
 
-SELECT SUM(`price`) AS 'totale_ordini_accepted'
-FROM `pagamenti`	 
-WHERE `status` = 'accepted'
+  SELECT SUM(`price`) AS 'totale_ordini_accepted'
+  FROM `pagamenti`	 
+  WHERE `status` = 'accepted'
 
 6) Qual è il prezzo massimo pagato?
 
-SELECT MAX(`price`) AS 'highest_price' 
-FROM `pagamenti`
+  SELECT MAX(`price`) AS 'highest_price' 
+  FROM `pagamenti`;
 
 7) Seleziona gli ospiti riconosciuti con patente e nati nel 1975
 
-SELECT * 
-FROM 	`ospiti`
-WHERE `document_type` = 'Driver License'
-AND `date_of_birth` BETWEEN '1975-01-01'AND '1975-12-31')
+  SELECT * 
+  FROM 	`ospiti`
+  WHERE `document_type` = 'Driver License'
+  AND `date_of_birth` BETWEEN '1975-01-01'AND '1975-12-31');
 
 8) Quanti posti letto ha l’hotel in totale?
 
-SELECT SUM(`beds`)
-FROM  `stanze`
+  SELECT SUM(`beds`)
+  FROM  `stanze`;
