@@ -41,7 +41,10 @@ HAVING `prenotazioni` > 2
 
 2) Stampare tutti gli ospiti per ogni prenotazione
 
-
+SELECT *
+FROM `prenotazioni_has_ospiti`	 
+INNER JOIN `ospiti`
+ON `prenotazioni_has_ospiti`.`ospite_id` = `ospiti`.`id`
 
 3) Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
 4) Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
